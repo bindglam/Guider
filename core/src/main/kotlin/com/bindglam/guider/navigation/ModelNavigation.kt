@@ -34,9 +34,6 @@ class ModelNavigation(plugin: Plugin, player: Player, path: List<Vertex>,
 
     private var compass = createCompass()
 
-    init {
-    }
-
     override fun onUpdate() {
         super.onUpdate()
         if(!compass.isClosed) {
