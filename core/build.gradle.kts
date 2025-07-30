@@ -8,7 +8,9 @@ plugins {
 dependencies {
     implementation(project(":api"))
     implementation("dev.jorel:commandapi-bukkit-shade-mojang-mapped:10.1.2")
-    implementation("com.github.Team-Arushia:Faker:v1.0.6")
+    implementation("com.github.Team-Arushia:Faker:v1.0.6") {
+        exclude("com.github.retrooper", "packetevents-spigot")
+    }
     compileOnly("com.nexomc:nexo:1.9.0")
     compileOnly("io.github.toxicity188:BetterModel:1.10.1")
     compileOnly("me.clip:placeholderapi:2.11.6")

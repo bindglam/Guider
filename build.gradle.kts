@@ -27,14 +27,14 @@ tasks {
         archiveClassifier = ""
         dependencies {
             exclude(dependency("org.jetbrains:annotations:26.0.2"))
+            exclude(dependency("org.jetbrains:annotations:13.0"))
         }
         fun prefix(pattern: String) {
             relocate(pattern, "$groupString.shaded.$pattern")
         }
         prefix("kotlin")
         prefix("dev.jorel.commandapi")
-        prefix("com.github.retrooper.packetevents")
-        prefix("io.github.retrooper.packetevents")
+        prefix("com.bindglam.faker")
         prefix("com.zaxxer.hikari")
     }
 }
