@@ -1,0 +1,47 @@
+vertex:
+  range: 5.0
+
+navigation:
+  type: model
+
+  default:
+    mark:
+      icon: '<yellow>*'
+      scale: 1.0
+
+  display:
+    compass:
+      offset:
+        x: 0.0
+        y: -0.7
+        z: 0.0
+      scale:
+        x: 0.5
+        y: 0.5
+        z: 0.5
+      itemstack: minecraft:compass
+    mark:
+      icon: '<yellow>*'
+      scale: 1.0
+
+  model:
+    compass:
+      model-id: arrow # only BetterModel
+      offset:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      scale: 1.0
+    mark:
+      icon: '<yellow>*'
+      scale: 1.0
+
+database:
+  type: SQLITE
+
+  mysql:
+    host: localhost
+    port: '3306'
+    user: root
+    password: ''
+    database: minecraft
