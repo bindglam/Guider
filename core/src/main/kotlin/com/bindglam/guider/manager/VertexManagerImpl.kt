@@ -52,6 +52,12 @@ class VertexManagerImpl(private val logger: Logger) : VertexManager {
                     config.getStringList("$id.to").forEach { to ->
                         addEdge(Edge(id, to))
                     }
+
+                    if(type == Vertex.Type.PORTAL) {
+                        config.getStringList("$id.teleport").forEach { to ->
+                            addEdge(Edge(id, to).apply { distance = 1 })
+                        }
+                    }
                 }
 
                 vertexes.add(vertex)
@@ -65,13 +71,12 @@ class VertexManagerImpl(private val logger: Logger) : VertexManager {
     private fun updateEdgesDistance() {
         vertexes.forEach { vertex ->
             vertex.edges.forEach { edge ->
-                val toLoc = getVertex(edge.to)!!.location
+                if(edge.distance == 0) {
+                    val toLoc = getVertex(edge.to)!!.location
 
-                // 다익스트라 알고리즘은 간선의 가중치가 양수여야함
-                edge.distance = if(vertex.type == Vertex.Type.DEFAULT)
-                    max(MathUtils.distanceSquared(vertex.location, toLoc).toInt(), 1)
-                else
-                    1
+                    // 다익스트라 알고리즘은 간선의 가중치가 양수여야함
+                    edge.distance = max(MathUtils.distanceSquared(vertex.location, toLoc).toInt(), 1)
+                }
             }
         }
     }
