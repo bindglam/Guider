@@ -100,23 +100,9 @@ class VertexManagerImpl(private val plugin: Plugin) : VertexManager {
         return nearestVertex // nearestVertexDistance의 초기 값이 double의 최대 값이기 때문에 null이 발생할 수 없음
     }
 
-    override fun getVertex(index: Int): Vertex? {
-        return vertexes[index]
-    }
-
-    override fun getVertex(id: String): Vertex? {
-        return vertexesById[id]
-    }
-
-    override fun getVertexCount(): Int {
-        return vertexesById.size
-    }
-
-    override fun getEdges(index: Int): @Unmodifiable List<Edge> {
-        return getVertex(index)?.edges ?: listOf()
-    }
-
-    override fun getEdges(id: String): @Unmodifiable List<Edge> {
-        return getVertex(id)?.edges ?: listOf()
-    }
+    override fun getVertex(index: Int): Vertex? = vertexes[index]
+    override fun getVertex(id: String): Vertex? = vertexesById[id]
+    override fun getVertexCount(): Int = vertexesById.size
+    override fun getEdges(index: Int): @Unmodifiable List<Edge> = getVertex(index)?.edges ?: listOf()
+    override fun getEdges(id: String): @Unmodifiable List<Edge> = getVertex(id)?.edges ?: listOf()
 }

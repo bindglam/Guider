@@ -36,9 +36,7 @@ class NavigationManagerImpl(private val plugin: Plugin, private val vertexManage
         factories[id] = factory
     }
 
-    override fun getNavigation(player: Player): Navigation? {
-        return navigationMap[player.uniqueId]
-    }
+    override fun getNavigation(player: Player): Navigation? = navigationMap[player.uniqueId]
 
     override fun createNavigation(player: Player, destination: Vertex) {
         if(navigationMap.containsKey(player.uniqueId))
