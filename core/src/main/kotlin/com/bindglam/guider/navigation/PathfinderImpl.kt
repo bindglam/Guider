@@ -1,6 +1,5 @@
 package com.bindglam.guider.navigation
 
-import com.bindglam.guider.Guider
 import com.bindglam.guider.manager.VertexManager
 import com.bindglam.guider.node.Vertex
 import java.util.*

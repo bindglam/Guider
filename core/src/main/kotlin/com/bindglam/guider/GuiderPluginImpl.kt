@@ -11,7 +11,6 @@ import dev.jorel.commandapi.CommandAPIBukkitConfig
 import dev.jorel.commandapi.CommandAPICommand
 import dev.jorel.commandapi.CommandPermission
 import dev.jorel.commandapi.arguments.PlayerArgument
-import dev.jorel.commandapi.arguments.StringArgument
 import dev.jorel.commandapi.arguments.TextArgument
 import dev.jorel.commandapi.executors.CommandExecutor
 import net.kyori.adventure.text.Component

@@ -1,29 +1,21 @@
 package com.bindglam.guider.navigation
 
 import com.bindglam.guider.node.Vertex
-import com.bindglam.guider.util.MathUtils
 import kr.toxicity.model.api.BetterModel
 import kr.toxicity.model.api.animation.AnimationModifier
 import kr.toxicity.model.api.data.renderer.ModelRenderer
-import kr.toxicity.model.api.tracker.EntityHideOption
-import kr.toxicity.model.api.tracker.EntityTracker
-import kr.toxicity.model.api.tracker.ModelRotator
-import kr.toxicity.model.api.tracker.TrackerModifier
-import kr.toxicity.model.api.tracker.TrackerUpdateAction
+import kr.toxicity.model.api.tracker.*
 import kr.toxicity.model.api.util.function.BonePredicate
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.entity.Display
 import org.bukkit.entity.Player
-import org.bukkit.event.EventHandler
-import org.bukkit.event.player.PlayerTeleportEvent
 import org.bukkit.plugin.Plugin
 import org.joml.Quaternionf
 import org.joml.Vector3f
 import java.util.concurrent.TimeUnit
 import java.util.function.Function
 import kotlin.math.atan2
-import kotlin.math.pow
 import kotlin.math.sqrt
 
 

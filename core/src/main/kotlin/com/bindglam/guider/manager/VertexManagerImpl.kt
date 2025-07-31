@@ -2,6 +2,7 @@ package com.bindglam.guider.manager
 
 import com.bindglam.guider.node.Edge
 import com.bindglam.guider.node.Vertex
+import com.bindglam.guider.util.ConfigUtils
 import com.bindglam.guider.util.FileUtils
 import com.bindglam.guider.util.MathUtils
 import org.bukkit.Bukkit
@@ -48,7 +49,7 @@ class VertexManagerImpl(private val logger: Logger) : VertexManager {
                 else
                     Vertex.Type.DEFAULT
 
-                val vertex = Vertex(loadedVertexes, id, Location(Bukkit.getWorld(config.getString("$id.location.world")!!), config.getDouble("$id.location.x"), config.getDouble("$id.location.y"), config.getDouble("$id.location.z")), type).apply {
+                val vertex = Vertex(loadedVertexes, id, ConfigUtils.parseLocation(config.getConfigurationSection("$id.location")!!), type).apply {
                     config.getStringList("$id.to").forEach { to ->
                         addEdge(Edge(id, to))
                     }
