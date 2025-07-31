@@ -88,8 +88,8 @@ class GuiderPluginImpl : JavaPlugin(), GuiderPlugin {
 
         vertexManager = VertexManagerImpl(logger)
         pathfinder = PathfinderImpl(vertexManager)
-        navigationManager = NavigationManagerImpl(logger, this)
-        playerDataManager = PlayerDataManagerImpl(this)
+        navigationManager = NavigationManagerImpl(this, vertexManager, pathfinder)
+        playerDataManager = PlayerDataManagerImpl(this, vertexManager, navigationManager)
 
         DatabaseUtils.init(this)
 

@@ -1,13 +1,12 @@
 package com.bindglam.guider.manager
 
-import com.bindglam.guider.Guider
 import com.bindglam.guider.util.DatabaseUtils
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import java.util.concurrent.TimeUnit
 
-class PlayerDataManagerImpl(private val plugin: Plugin) : PlayerDataManager {
+class PlayerDataManagerImpl(private val plugin: Plugin, private val vertexManager: VertexManager, private val navigationManager: NavigationManager) : PlayerDataManager {
     override fun init() {
         DatabaseUtils.connection.use { connection ->
             val statement = connection.createStatement()
@@ -24,10 +23,10 @@ class PlayerDataManagerImpl(private val plugin: Plugin) : PlayerDataManager {
                 val rs = statement.executeQuery()
 
                 if(rs.next()) {
-                    val destination = Guider.getInstance().vertexManager.getVertex(rs.getString("destination"))
+                    val destination = vertexManager.getVertex(rs.getString("destination"))
 
                     if(destination != null)
-                        Guider.getInstance().navigationManager.createNavigation(player, destination)
+                        navigationManager.createNavigation(player, destination)
                 }
 
                 rs.close()
@@ -37,7 +36,7 @@ class PlayerDataManagerImpl(private val plugin: Plugin) : PlayerDataManager {
     }
 
     override fun save(player: Player) {
-        val navigation = Guider.getInstance().navigationManager.getNavigation(player)
+        val navigation = navigationManager.getNavigation(player)
         val destination = navigation?.path?.last()?.id
 
         navigation?.dispose(false, false)
