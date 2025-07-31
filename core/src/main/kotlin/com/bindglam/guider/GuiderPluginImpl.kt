@@ -12,6 +12,7 @@ import dev.jorel.commandapi.CommandAPICommand
 import dev.jorel.commandapi.CommandPermission
 import dev.jorel.commandapi.arguments.PlayerArgument
 import dev.jorel.commandapi.arguments.StringArgument
+import dev.jorel.commandapi.arguments.TextArgument
 import dev.jorel.commandapi.executors.CommandExecutor
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
@@ -51,7 +52,7 @@ class GuiderPluginImpl : JavaPlugin(), GuiderPlugin {
                     .withAliases("navi")
                     .withSubcommands(
                         CommandAPICommand("add")
-                            .withArguments(PlayerArgument("player"), StringArgument("destination"))
+                            .withArguments(PlayerArgument("player"), TextArgument("destination"))
                             .executes(CommandExecutor { sender, args ->
                                 val player = args["player"] as Player
                                 val destinationId = args["destination"] as String
