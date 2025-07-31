@@ -1,6 +1,7 @@
 package com.bindglam.guider.navigation
 
 import com.bindglam.guider.node.Vertex
+import com.bindglam.guider.util.MathUtils
 import kr.toxicity.model.api.BetterModel
 import kr.toxicity.model.api.animation.AnimationModifier
 import kr.toxicity.model.api.data.renderer.ModelRenderer
@@ -22,6 +23,7 @@ import org.joml.Vector3f
 import java.util.concurrent.TimeUnit
 import java.util.function.Function
 import kotlin.math.atan2
+import kotlin.math.pow
 import kotlin.math.sqrt
 
 
@@ -58,19 +60,14 @@ class ModelNavigation(plugin: Plugin, player: Player, path: List<Vertex>,
         }
     }
 
-    @EventHandler
-    override fun onDimensionChanged(event: PlayerTeleportEvent) {
-        super.onDimensionChanged(event)
-
-        if(event.player.uniqueId != player.uniqueId) return
+    override fun onTeleport() {
+        super.onTeleport()
 
         compass.close()
 
-        if(event.to.world == destination?.location?.world) {
-            Bukkit.getAsyncScheduler().runDelayed(plugin, { task ->
-                compass = createCompass()
-            }, 40*50L, TimeUnit.MILLISECONDS)
-        }
+        Bukkit.getAsyncScheduler().runDelayed(plugin, { task ->
+            compass = createCompass()
+        }, 1L, TimeUnit.SECONDS)
     }
 
     private fun createCompass(): EntityTracker {

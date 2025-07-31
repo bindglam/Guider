@@ -6,8 +6,10 @@ import com.bindglam.guider.node.Vertex;
 import com.bindglam.guider.util.MathUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,6 +34,7 @@ public abstract class NavigationBase implements Navigation, Listener {
 
     protected abstract void onUpdate();
     protected abstract void onDispose();
+    protected abstract void onTeleport();
 
     @Override
     public void update() {
@@ -58,6 +61,13 @@ public abstract class NavigationBase implements Navigation, Listener {
         Guider.getInstance().getNavigationManager().removeNavigation(player);
 
         HandlerList.unregisterAll(this);
+    }
+
+    @EventHandler
+    public void onPlayerTeleport(PlayerTeleportEvent event) {
+        if(!event.getPlayer().getUniqueId().equals(player.getUniqueId())) return;
+
+        onTeleport();
     }
 
     @Override
