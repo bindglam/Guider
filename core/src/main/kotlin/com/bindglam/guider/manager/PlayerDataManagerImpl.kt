@@ -37,7 +37,7 @@ class PlayerDataManagerImpl(private val plugin: Plugin, private val vertexManage
 
     override fun save(player: Player) {
         val navigation = navigationManager.getNavigation(player)
-        val destination = navigation?.path?.last()?.id
+        val destination = navigation?.path?.lastOrNull()?.id
 
         navigation?.dispose(false, false)
 
