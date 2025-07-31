@@ -8,12 +8,13 @@ import com.bindglam.guider.util.MathUtils
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.configuration.file.YamlConfiguration
+import org.bukkit.plugin.Plugin
 import org.jetbrains.annotations.Unmodifiable
 import java.io.File
 import java.util.logging.Logger
 import kotlin.math.max
 
-class VertexManagerImpl(private val logger: Logger) : VertexManager {
+class VertexManagerImpl(private val plugin: Plugin) : VertexManager {
     companion object {
         private val VERTEXES_FOLDER = File("plugins/Guider/vertexes/")
     }
@@ -32,7 +33,7 @@ class VertexManagerImpl(private val logger: Logger) : VertexManager {
 
         updateEdgesDistance()
 
-        logger.info("Loaded $vertexCount vertexes")
+        plugin.logger.info("Loaded $vertexCount vertexes")
     }
 
     private fun loadVertexes() {

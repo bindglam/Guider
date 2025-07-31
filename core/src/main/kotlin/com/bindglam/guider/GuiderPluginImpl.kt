@@ -24,10 +24,10 @@ class GuiderPluginImpl : JavaPlugin(), GuiderPlugin {
         private val CONFIG_FILE = File("plugins/Guider/config.yml")
     }
 
-    private lateinit var vertexManager: VertexManager
-    private lateinit var pathfinder: Pathfinder
-    private lateinit var navigationManager: NavigationManager
-    private lateinit var playerDataManager: PlayerDataManager
+    private val vertexManager by lazy { VertexManagerImpl(this) }
+    private val pathfinder by lazy { PathfinderImpl(vertexManager) }
+    private val navigationManager by lazy { NavigationManagerImpl(this, vertexManager, pathfinder) }
+    private val playerDataManager by lazy { PlayerDataManagerImpl(this, vertexManager, navigationManager) }
 
     override fun onLoad() {
         CommandAPI.onLoad(CommandAPIBukkitConfig(this))
@@ -85,11 +85,6 @@ class GuiderPluginImpl : JavaPlugin(), GuiderPlugin {
         Guider.setInstance(this)
 
         server.pluginManager.registerEvents(PlayerListener(), this)
-
-        vertexManager = VertexManagerImpl(logger)
-        pathfinder = PathfinderImpl(vertexManager)
-        navigationManager = NavigationManagerImpl(this, vertexManager, pathfinder)
-        playerDataManager = PlayerDataManagerImpl(this, vertexManager, navigationManager)
 
         DatabaseUtils.init(this)
 
