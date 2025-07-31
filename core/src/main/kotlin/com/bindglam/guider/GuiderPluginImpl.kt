@@ -88,7 +88,7 @@ class GuiderPluginImpl : JavaPlugin(), GuiderPlugin {
         server.pluginManager.registerEvents(PlayerListener(), this)
 
         vertexManager = VertexManagerImpl(logger)
-        pathfinder = PathfinderImpl()
+        pathfinder = PathfinderImpl(vertexManager)
         navigationManager = NavigationManagerImpl(logger, this)
         playerDataManager = PlayerDataManagerImpl(this)
 
