@@ -1,6 +1,6 @@
 package com.bindglam.guider.manager
 
-import com.bindglam.guider.GuiderPluginImpl.Companion.CONFIG_FILE
+import com.bindglam.guider.GuiderPluginImpl
 import dev.jorel.commandapi.CommandAPI
 import dev.jorel.commandapi.CommandAPIBukkitConfig
 import dev.jorel.commandapi.CommandAPICommand
@@ -28,7 +28,7 @@ class CommandManagerImpl(
                     .executes(CommandExecutor { sender, args ->
                         sender.sendMessage(Component.text("리로드중..."))
 
-                        plugin.config.load(CONFIG_FILE)
+                        plugin.config.load(GuiderPluginImpl.CONFIG_FILE)
 
                         vertexManager.init()
                         navigationManager.init()
