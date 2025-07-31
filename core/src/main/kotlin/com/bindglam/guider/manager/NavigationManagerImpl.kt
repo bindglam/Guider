@@ -46,12 +46,12 @@ class NavigationManagerImpl(private val plugin: Plugin, private val vertexManage
 
         val factory = factories[plugin.config.getString("navigation.type")] ?: throw RuntimeException("Failed to create navigation")
 
-        pathfinder.find(vertexManager.findNearestVertex(player.location), destination).thenAccept { path ->
+        pathfinder.find(vertexManager.findNearestVertex(player.location), destination).thenAcceptAsync { path ->
             val navigation = factory.create(plugin, player, path, plugin.config.getConfigurationSection("navigation.${plugin.config.getString("navigation.type")}")!!)
 
             navigationMap[player.uniqueId] = navigation
 
-            NavigationStartEvent(player, navigation).callEvent()
+            NavigationStartEvent(player, navigation, true).callEvent()
         }
     }
 

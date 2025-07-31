@@ -11,8 +11,8 @@ public class NavigationStartEvent extends PlayerEvent {
 
     private final Navigation navigation;
 
-    public NavigationStartEvent(@NotNull Player who, Navigation navigation) {
-        super(who);
+    public NavigationStartEvent(@NotNull Player who, Navigation navigation, boolean async) {
+        super(who, async);
         this.navigation = navigation;
     }
 
