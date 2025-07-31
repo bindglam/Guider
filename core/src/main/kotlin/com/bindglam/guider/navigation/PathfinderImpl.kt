@@ -63,4 +63,9 @@ class PathfinderImpl(private val vertexManager: VertexManager) : Pathfinder {
             }
         }.asReversed()
     }
+
+    private data class Node(
+        val vertexIndex: Int,
+        val distance: Int
+    )
 }
