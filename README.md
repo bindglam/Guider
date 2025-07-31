@@ -2,7 +2,7 @@
 
 **Guider**은 플레이어가 서버 내에서 네비게이션(길 찾기) 기능을 제공해주는 페이퍼 플러그인입니다. Java와 Kotlin으로 개발되어 안정적이고 뛰어난 성능을 자랑합니다.
 
-[![Minecraft Version](https://img.shields.io/badge/Paper-1.21.x%20~%201.21.x-brightgreen.svg)](https://papermc.io/)
+[![](https://jitpack.io/v/bindglam/Guider.svg)](https://jitpack.io/#bindglam/Guider)
 [![CodeFactor](https://www.codefactor.io/repository/github/bindglam/guider/badge)](https://www.codefactor.io/repository/github/bindglam/guider)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
 
