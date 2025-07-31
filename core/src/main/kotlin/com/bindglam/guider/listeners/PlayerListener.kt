@@ -8,16 +8,12 @@ import org.bukkit.event.player.PlayerQuitEvent
 
 class PlayerListener : Listener {
     @EventHandler
-    fun onJoin(event: PlayerJoinEvent) {
-        val player = event.player
-
+    fun PlayerJoinEvent.onJoin() {
         Guider.getInstance().playerDataManager.load(player)
     }
 
     @EventHandler
-    fun onQuit(event: PlayerQuitEvent) {
-        val player = event.player
-
+    fun PlayerQuitEvent.onQuit() {
         Guider.getInstance().playerDataManager.save(player)
     }
 }
