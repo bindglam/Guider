@@ -100,19 +100,8 @@ class GuiderPluginImpl : JavaPlugin(), GuiderPlugin {
         DatabaseUtils.close()
     }
 
-    override fun getVertexManager(): VertexManager {
-        return vertexManager
-    }
-
-    override fun getPathfinder(): Pathfinder {
-        return pathfinder
-    }
-
-    override fun getNavigationManager(): NavigationManager {
-        return navigationManager
-    }
-
-    override fun getPlayerDataManager(): PlayerDataManager {
-        return playerDataManager
-    }
+    override fun getVertexManager(): VertexManager = vertexManager
+    override fun getPathfinder(): Pathfinder = pathfinder
+    override fun getNavigationManager(): NavigationManager = navigationManager
+    override fun getPlayerDataManager(): PlayerDataManager = playerDataManager
 }
