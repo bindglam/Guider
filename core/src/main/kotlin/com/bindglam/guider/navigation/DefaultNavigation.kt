@@ -49,14 +49,12 @@ open class DefaultNavigation(plugin: Plugin, player: Player, path: List<Vertex>,
     open fun onDimensionChanged(event: PlayerTeleportEvent) {
         if(event.player.uniqueId != player.uniqueId) return
 
-        if(event.from.world != event.to.world && event.to.world == mark.location.world) {
-            mark.remove(player)
+        mark.remove(player)
 
-            Bukkit.getAsyncScheduler().runDelayed(plugin, { task ->
-                mark = createMark()
-                mark.spawn(player)
-            }, 40*50L, TimeUnit.MILLISECONDS)
-        }
+        Bukkit.getAsyncScheduler().runDelayed(plugin, { task ->
+            mark = createMark()
+            mark.spawn(player)
+        }, 40*50L, TimeUnit.MILLISECONDS)
     }
 
     private fun createMark(): FakeTextDisplayEntity {

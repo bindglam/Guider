@@ -64,8 +64,7 @@ class ModelNavigation(plugin: Plugin, player: Player, path: List<Vertex>,
 
         if(event.player.uniqueId != player.uniqueId) return
 
-        if(event.from.world != event.to.world)
-            compass.close()
+        compass.close()
 
         if(event.to.world == destination?.location?.world) {
             Bukkit.getAsyncScheduler().runDelayed(plugin, { task ->
